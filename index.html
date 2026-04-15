@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cosmic AI</title>
+    <title>Cosmic Ai V2</title>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <style>
         :root { --bg: #131314; --sidebar: #1e1f20; --text: #e3e3e3; --gradient: linear-gradient(90deg, #4447e5, #b87cfc); }
@@ -18,17 +18,25 @@
             z-index: 9998; text-align: center; font-family: 'Courier New', Courier, monospace;
         }
         .warn-text { color: #ff0000; font-size: 24px; font-weight: bold; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px; }
-        .warn-sub { color: #ff0000; font-size: 14px; margin-bottom: 10px; }
-        .btn-continue { background: transparent; border: 2px solid #ff0000; color: #ff0000; padding: 10px 20px; cursor: pointer; font-family: inherit; font-weight: bold; transition: 0.3s; margin-top: 10px; }
+        .warn-sub { color: #ff0000; font-size: 14px; margin-bottom: 30px; }
+        .btn-continue { background: transparent; border: 2px solid #ff0000; color: #ff0000; padding: 10px 20px; cursor: pointer; font-family: inherit; font-weight: bold; transition: 0.3s; }
         .btn-continue:hover { background: #ff0000; color: #000; }
 
-        #sidebar { width: 260px; background: var(--sidebar); padding: 15px; display: none; flex-direction: column; border-right: 1px solid #333; }
+        #sidebar { width: 260px; background: var(--sidebar); padding: 15px; display: none; flex-direction: column; border-right: 1px solid #333; position: relative; }
         .btn-new { background: #2d2f31; border-radius: 50px; padding: 10px; cursor: pointer; text-align: center; border: 1px solid #444; margin-bottom: 15px; font-size: 14px; }
+        
         #history-list { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 5px; }
         .history-item { padding: 8px 12px; border-radius: 6px; font-size: 13px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; color: #aaa; }
         .history-item.active { background: #37393b; color: white; border-left: 3px solid #b87cfc; }
         .item-actions { display: none; gap: 10px; }
         .history-item:hover .item-actions { display: flex; }
+
+        /* BUG REPORT LINK - BOTTOM LEFT */
+        #bug-report-link { 
+            position: absolute; bottom: 15px; left: 15px; font-size: 11px; color: white; 
+            text-decoration: none; opacity: 0.6; transition: 0.3s; font-family: 'Courier New', monospace;
+        }
+        #bug-report-link:hover { opacity: 1; text-decoration: underline; }
 
         #main { flex: 1; display: none; flex-direction: column; position: relative; }
         #chat-window { flex: 1; overflow-y: auto; padding: 30px 10%; display: flex; flex-direction: column; gap: 20px; scroll-behavior: smooth; }
@@ -60,15 +68,14 @@
     <div id="warning-screen">
         <div class="warn-text">WARNING</div>
         <div class="warn-sub">If you see bugs please report back.</div>
-        <div style="color: white; font-size: 14px; margin-bottom: 20px;">
-            Report Here: <a href="https://github.com/Cosmic785/my-local-ai" target="_blank" style="color: #b87cfc; text-decoration: underline;">https://github.com/Cosmic785/my-local-ai</a>
-        </div>
         <button class="btn-continue" onclick="window.closeWarning()">CONTINUE</button>
     </div>
 
     <div id="sidebar">
         <div class="btn-new" onclick="window.startNewChat()">+ New Chat</div>
         <div id="history-list"></div>
+        
+        <a id="bug-report-link" href="https://github.com/Cosmic785/my-local-ai" target="_blank">Report A Bug</a>
     </div>
 
     <div id="main">
