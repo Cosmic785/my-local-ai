@@ -3,34 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Local AI 10k (Google Auth Edition)</title>
+    <title>Local AI 10k - Secured</title>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <style>
         :root { --bg: #131314; --sidebar: #1e1f20; --text: #e3e3e3; --gradient: linear-gradient(90deg, #4447e5, #b87cfc); }
         body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); margin: 0; display: flex; height: 100vh; overflow: hidden; }
         
-        /* Login Overlay */
+        /* 1. Login Overlay (The Gatekeeper) */
         #login-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--bg); z-index: 9999;
-            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px;
+            background: #000; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; z-index: 5000;
         }
+        #login-box { background: #1e1e1e; padding: 40px; border-radius: 15px; text-align: center; border: 1px solid #333; }
 
-        /* Sidebar */
-        #sidebar { width: 280px; background: var(--sidebar); padding: 15px; display: flex; flex-direction: column; gap: 10px; border-right: 1px solid #333; z-index: 1000; }
+        /* 2. Sidebar & History */
+        #sidebar { width: 280px; background: var(--sidebar); padding: 15px; display: none; flex-direction: column; gap: 10px; border-right: 1px solid #333; }
         .btn-new { background: #2d2f31; border-radius: 50px; padding: 12px; cursor: pointer; font-size: 14px; text-align: center; color: white; border: 1px solid #444; }
         #history-list { overflow-y: auto; flex: 1; display: flex; flex-direction: column; gap: 5px; margin-top: 15px; }
         .history-item { padding: 12px; border-radius: 8px; font-size: 13px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; color: #ccc; }
         .history-item.active { background: #37393b; color: white; border-left: 3px solid #b87cfc; }
-        .del-btn { color: #ff5555; padding: 5px; font-weight: bold; opacity: 0.5; }
+        .del-btn { color: #ff5555; padding: 5px; opacity: 0.5; }
 
-        /* Right-Click Menu */
-        #context-menu { position: fixed; background: #2d2f31; border: 1px solid #444; border-radius: 8px; padding: 5px 0; min-width: 150px; display: none; z-index: 2000; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
-        .context-item { padding: 10px 20px; font-size: 13px; cursor: pointer; color: white; }
-        .context-item:hover { background: #4447e5; }
-
-        /* Chat Window */
-        #main { flex: 1; display: flex; flex-direction: column; position: relative; width: 100%; }
+        /* 3. Main Interface */
+        #main { flex: 1; display: none; flex-direction: column; position: relative; width: 100%; }
         #chat-window { flex: 1; overflow-y: auto; padding: 60px 15% 40px; display: flex; flex-direction: column; gap: 25px; }
         .row { display: flex; gap: 15px; }
         .avatar { width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0; }
@@ -38,43 +34,53 @@
         .user-avatar { background: #5436da; }
         .content { font-size: 16px; line-height: 1.6; white-space: pre-wrap; width: 100%; }
 
+        /* 4. Input Area */
         #input-container { padding: 20px 15%; background: var(--bg); }
         .input-box { background: #1e1f20; border-radius: 28px; padding: 8px 24px; display: flex; align-items: center; border: 1px solid #444; }
         input { flex: 1; background: transparent; border: none; color: white; outline: none; font-size: 16px; padding: 10px 0; }
-        button { background: none; border: none; color: #b87cfc; cursor: pointer; font-size: 24px; }
+        button#sendBtn { background: none; border: none; color: #b87cfc; cursor: pointer; font-size: 24px; }
+        #loading-status { font-size: 11px; color: #777; margin-bottom: 5px; letter-spacing: 0.5px; }
+
+        /* 5. Custom Context Menu */
+        #context-menu { position: fixed; background: #2d2f31; border: 1px solid #444; border-radius: 8px; padding: 5px 0; min-width: 150px; display: none; z-index: 6000; }
+        .context-item { padding: 10px 20px; font-size: 13px; cursor: pointer; color: white; }
+        .context-item:hover { background: #4447e5; }
     </style>
 </head>
 <body>
 
-<div id="login-overlay">
-    <h1 style="color: white; font-weight: 300;">Local AI Login</h1>
-    <div id="g_id_onload"
-         data-client_id="962541317340-h2tef7ghacll2okk8latem18qbsrs3hd.apps.googleusercontent.com"
-         data-callback="handleCredentialResponse"
-         data-auto_prompt="false">
-    </div>
-    <div class="g_id_signin" data-type="standard"></div>
-</div>
-
-<div id="sidebar">
-    <div id="user-display" style="font-size: 11px; color: #888; margin-bottom: 5px;">Guest Mode</div>
-    <div class="btn-new" onclick="startNewChat()">+ New chat</div>
-    <div id="history-list"></div>
-</div>
-
-<div id="context-menu">
-    <div class="context-item" onclick="triggerRename()">✏️ Rename Chat</div>
-</div>
-
-<div id="main">
-    <div id="chat-window"></div>
-    <div id="input-container">
-        <div class="input-box">
-            <input type="text" id="userInput" placeholder="Sign in to unlock AI..." disabled>
-            <button id="sendBtn" onclick="askAI()" disabled>➤</button>
+    <div id="login-overlay">
+        <div id="login-box">
+            <h1 style="background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Local AI 10k</h1>
+            <p style="color: #888;">Secure Login Required</p>
+            <div id="g_id_onload"
+                 data-client_id="962541317340-h2tef7ghacll2okk8latem18qbsrs3hd.apps.googleusercontent.com"
+                 data-callback="handleCredentialResponse"
+                 data-auto_prompt="false">
+            </div>
+            <div class="g_id_signin" data-type="standard" data-theme="filled_black" data-size="large"></div>
         </div>
     </div>
-</div>
+
+    <div id="sidebar">
+        <div class="btn-new" onclick="startNewChat()">+ New chat</div>
+        <div id="history-list"></div>
+    </div>
+
+    <div id="context-menu">
+        <div class="context-item" onclick="triggerRename()">✏️ Rename Chat</div>
+    </div>
+
+    <div id="main">
+        <div id="chat-window"></div>
+        <div id="input-container">
+            <div id="loading-status">Engine Locked - Sign in to initialize...</div>
+            <div class="input-box">
+                <input type="text" id="userInput" placeholder="Authenticate to begin..." disabled>
+                <button id="sendBtn" onclick="askAI()" disabled>➤</button>
+            </div>
+        </div>
+    </div>
 
 <script type="module">
     import { CreateMLCEngine } from "https://esm.run/@mlc-ai/web-llm";
@@ -84,18 +90,19 @@
     let rightClickedId = null;
     let chats = JSON.parse(localStorage.getItem('local_ai_chats')) || {};
 
-    // 1. Auth Callback
+    // 1. GMAIL LOGIN SUCCESS CALLBACK
     window.handleCredentialResponse = (response) => {
-        const payload = JSON.parse(atob(response.credential.split('.')[1]));
-        document.getElementById("user-display").innerText = payload.email;
+        console.log("Access Granted. Initializing AI...");
         document.getElementById("login-overlay").style.display = "none";
-        initEngine(); // Unlock AI after login
+        document.getElementById("sidebar").style.display = "flex";
+        document.getElementById("main").style.display = "flex";
+        initEngine();
     };
 
-    // 2. Right-Click Context Menu
+    // 2. CONTEXT MENU LOGIC
     const ctxMenu = document.getElementById("context-menu");
     document.addEventListener("click", () => ctxMenu.style.display = "none");
-    
+
     window.showContextMenu = (e, id) => {
         e.preventDefault();
         rightClickedId = id;
@@ -105,19 +112,31 @@
     };
 
     window.triggerRename = () => {
-        const newName = prompt("Rename chat to:", chats[rightClickedId].title);
-        if (newName) { chats[rightClickedId].title = newName.trim(); saveAndRefresh(); }
+        const newName = prompt("New name for this chat:", chats[rightClickedId].title);
+        if (newName && newName.trim()) {
+            chats[rightClickedId].title = newName.trim();
+            saveAndRefresh();
+        }
     };
 
-    // 3. AI Logic
+    // 3. AI ENGINE LOGIC
     async function initEngine() {
+        const status = document.getElementById("loading-status");
         try {
-            document.getElementById("userInput").placeholder = "Loading engine...";
-            engine = await CreateMLCEngine("Llama-3.2-1B-Instruct-q4f16_1-MLC");
+            const modelId = "Llama-3.2-1B-Instruct-q4f16_1-MLC"; 
+            engine = await CreateMLCEngine(modelId, {
+                initProgressCallback: (p) => { 
+                    status.innerText = `Preparing AI: ${Math.round(p.progress * 100)}%`; 
+                }
+            });
+            status.innerText = "Local AI Engine Ready";
             document.getElementById("userInput").disabled = false;
             document.getElementById("sendBtn").disabled = false;
             document.getElementById("userInput").placeholder = "Ask anything...";
-        } catch (e) { console.error("WebGPU Error:", e); }
+        } catch (err) {
+            status.innerText = "Initialization Error. Check WebGPU Support.";
+            console.error(err);
+        }
     }
 
     window.askAI = async () => {
@@ -133,9 +152,10 @@
         renderMessages();
         input.value = '';
 
-        const chunks = await engine.chat.completions.create({ messages: chats[currentChatId].history, stream: true });
-        let aiText = "";
         const row = addRowToUI("", "ai");
+        const chunks = await engine.chat.completions.create({ messages: chats[currentChatId].history, stream: true });
+        
+        let aiText = "";
         for await (const chunk of chunks) {
             aiText += chunk.choices[0]?.delta?.content || "";
             row.querySelector(".content").innerText = aiText;
@@ -145,7 +165,7 @@
         saveAndRefresh();
     };
 
-    // 4. UI/History Management
+    // 4. UI & STORAGE
     window.startNewChat = () => {
         currentChatId = Date.now().toString();
         chats[currentChatId] = { title: "New Chat", history: [] };
@@ -163,8 +183,7 @@
     function renderMessages() {
         const win = document.getElementById('chat-window');
         win.innerHTML = '';
-        if (!currentChatId) return;
-        chats[currentChatId].history.forEach(msg => addRowToUI(msg.content, msg.role === 'user' ? 'user' : 'ai'));
+        if (currentChatId) chats[currentChatId].history.forEach(msg => addRowToUI(msg.content, msg.role === 'user' ? 'user' : 'ai'));
         win.scrollTop = win.scrollHeight;
     }
 
@@ -188,8 +207,9 @@
         Object.keys(chats).sort((a,b) => b-a).forEach(id => {
             const item = document.createElement('div');
             item.className = `history-item ${id === currentChatId ? 'active' : ''}`;
-            item.innerHTML = `<span onclick="selectChat('${id}')" oncontextmenu="showContextMenu(event, '${id}')" style="flex:1">${chats[id].title}</span>
-                              <span class="del-btn" onclick="deleteChat('${id}')">✕</span>`;
+            item.innerHTML = `
+                <span onclick="selectChat('${id}')" oncontextmenu="showContextMenu(event, '${id}')" style="flex:1">${chats[id].title}</span>
+                <span class="del-btn" onclick="deleteChat('${id}')">✕</span>`;
             list.appendChild(item);
         });
     }
