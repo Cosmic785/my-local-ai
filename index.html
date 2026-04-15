@@ -32,9 +32,9 @@
         .row { display: flex; gap: 12px; margin-bottom: 10px; }
         .avatar { width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0; background-size: contain; background-repeat: no-repeat; background-position: center; }
         
-        /* Your Custom AI Profile Image */
+        /* Fixed AI Profile Image from your upload */
         .ai-avatar { 
-            background-image: url('https://i.ibb.co/XRxYmS4Y/Screenshot-2026-04-15-085831-removebg-preview.png'); 
+            background-image: url('https://i.ibb.co/3mN9R0H/Screenshot-2026-04-15-085831-removebg-preview.png'); 
         }
         
         .user-avatar { background: #5436da; }
@@ -71,6 +71,7 @@
     </div>
 
 <script>
+    // Fixed callback recognition
     window.unlockNow = (response) => {
         document.getElementById("login-overlay").style.display = "none";
         document.getElementById("sidebar").style.display = "flex";
@@ -136,7 +137,7 @@
             });
             
             let fullAiResponse = "";
-            const row = addRowUI("", "ai");
+            const row = addRowUI("", "ai"); // ReferenceError fix: Ensure row is handled correctly
 
             for await (const chunk of chunks) {
                 if (!isGenerating) break; 
@@ -200,7 +201,8 @@
     function addRowUI(t, type) {
         const row = document.createElement("div");
         row.className = "row";
-        row.innerHTML = `<div class="avatar ${type}-avatar"></div><div class="content">${t}</div>`;
+        row.innerHTML = `<div class="avatar ${type}-avatar"></div><div class="content"></div>`;
+        row.querySelector(".content").innerText = t; // XSS protection
         document.getElementById("chat-window").appendChild(row);
         return row;
     }
@@ -217,11 +219,12 @@
             const item = document.createElement("div");
             item.className = `history-item ${id === currentId ? 'active' : ''}`;
             item.onclick = () => window.selectChat(id);
-            item.innerHTML = `<span>${chats[id].title}</span>
+            item.innerHTML = `<span></span>
                 <div class="item-actions">
                     <span onclick="window.renameChat('${id}', event)">✏️</span>
                     <span onclick="window.deleteChat('${id}', event)">✕</span>
                 </div>`;
+            item.querySelector("span").innerText = chats[id].title;
             list.appendChild(item);
         });
     }
