@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cosmic AI V21</title>
+    <title>My Notepad AI</title>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <style>
         :root { --bg: #131314; --sidebar: #1e1f20; --text: #e3e3e3; --gradient: linear-gradient(90deg, #4447e5, #b87cfc); }
@@ -12,6 +12,13 @@
         #login-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 9999; }
         
         #sidebar { width: 260px; background: var(--sidebar); padding: 15px; display: none; flex-direction: column; border-right: 1px solid #333; position: relative; }
+        
+        /* New Profile Section Top Left */
+        #profile-section { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; cursor: pointer; padding: 5px; border-radius: 8px; transition: background 0.2s; }
+        #profile-section:hover { background: #2d2f31; }
+        #user-profile-img { width: 40px; height: 40px; border-radius: 50%; background-image: url('https://www.meta.ai/images/cot_logo_static/orbit.png'); background-size: cover; background-position: center; border: 1px solid #444; }
+        #profile-label { font-size: 14px; font-weight: bold; color: white; }
+
         .btn-new { background: #2d2f31; border-radius: 50px; padding: 10px; cursor: pointer; text-align: center; border: 1px solid #444; margin-bottom: 15px; font-size: 14px; }
         
         #history-list { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 5px; }
@@ -43,7 +50,6 @@
 
     <script>
         // --- BYPASS: LOCK MOD OBJECT ---
-        // This prevents the hacker's "window.mod = ..." from ever working.
         Object.defineProperty(window, 'mod', {
             value: { help: () => console.log("Security: Mod Menu is Disabled.") },
             writable: false,
@@ -58,6 +64,12 @@
     </div>
 
     <div id="sidebar">
+        <div id="profile-section" onclick="document.getElementById('file-upload').click()">
+            <div id="user-profile-img"></div>
+            <span id="profile-label">Settings</span>
+            <input type="file" id="file-upload" style="display:none" accept="image/*">
+        </div>
+
         <div class="btn-new" onclick="window.startNewChat()">+ New Chat</div>
         <div id="history-list"></div>
         <a id="bug-report-link" href="https://github.com/Cosmic785/my-local-ai" target="_blank">Report A Bug</a>
@@ -81,6 +93,25 @@
         document.getElementById("main").style.display = "flex";
         window.dispatchEvent(new Event('auth-ready'));
     };
+
+    // Logic to handle profile image upload
+    document.getElementById('file-upload').addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                document.getElementById('user-profile-img').style.backgroundImage = `url('${event.target.result}')`;
+                localStorage.setItem('custom_profile_pic', event.target.result);
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // Load saved profile pic on start
+    const savedPic = localStorage.getItem('custom_profile_pic');
+    if (savedPic) {
+        document.getElementById('user-profile-img').style.backgroundImage = `url('${savedPic}')`;
+    }
 </script>
 
 <script type="module">
