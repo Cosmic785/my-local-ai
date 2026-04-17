@@ -48,9 +48,13 @@
 
         #bottom-section { flex: 1; display: flex; flex-direction: column-reverse; padding: 15px; overflow: hidden; }
         #history-list { flex: 1; overflow-y: auto; display: flex; flex-direction: column-reverse; gap: 5px; margin-top: 10px; }
-        .history-item { padding: 8px 12px; border-radius: 6px; font-size: 13px; cursor: pointer; color: var(--text); opacity: 0.7; }
+        
+        .history-item { padding: 8px 12px; border-radius: 6px; font-size: 13px; cursor: pointer; color: var(--text); opacity: 0.7; position: relative; display: flex; justify-content: space-between; align-items: center; }
         .history-item.active { background: var(--user-bubble); opacity: 1; border-left: 3px solid var(--accent); }
         
+        /* The Notification Dot */
+        .notif-dot { width: 8px; height: 8px; background-color: #b87cfc; border-radius: 50%; display: inline-block; box-shadow: 0 0 5px #b87cfc; }
+
         #prompt-library { padding: 10px; border-top: 1px solid var(--border); max-height: 150px; overflow-y: auto; }
         .prompt-chip { font-size: 11px; background: var(--user-bubble); padding: 5px 10px; border-radius: 15px; margin: 3px; cursor: pointer; display: inline-block; border: 1px solid var(--border); }
 
@@ -160,8 +164,6 @@
     </div>
 
 <script>
-    const pingSound = new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3');
-
     window.toggleSettings = () => {
         const panel = document.getElementById('settings-panel');
         panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
@@ -261,7 +263,11 @@
         if (!val || isGenerating) return;
 
         if (!currentId) window.startNewChat();
-        if (chats[currentId].title === "New Chat") chats[currentId].title = val.substring(0, 20);
+        
+        if (chats[currentId].title === "New Chat") {
+            chats[currentId].title = val.substring(0, 20);
+        }
+        
         chats[currentId].history.push({ role: "user", content: val });
         input.value = "";
         window.render();
@@ -298,13 +304,32 @@ My interface is built by Meta, but the code behind it isn’t public. Think of m
                 document.getElementById('chat-window').scrollTop = document.getElementById('chat-window').scrollHeight;
             }
             chats[currentId].history.push({ role: "assistant", content: fullStr });
-            pingSound.play().catch(e => {});
+            
+            // Notification logic: If NOT in the current chat, show the dot
+            Object.keys(chats).forEach(id => {
+                if(id !== currentId) {
+                    chats[id].hasNotif = true;
+                }
+            });
+
             save();
         } finally { isGenerating = false; }
     };
 
-    window.startNewChat = () => { currentId = Date.now().toString(); chats[currentId] = { title: "New Chat", history: [] }; save(); window.render(); };
-    window.selectChat = (id) => { currentId = id; window.render(); refreshSidebar(); };
+    window.startNewChat = () => { 
+        currentId = Date.now().toString(); 
+        chats[currentId] = { title: "New Chat", history: [], hasNotif: false }; 
+        save(); 
+        window.render(); 
+    };
+
+    window.selectChat = (id) => { 
+        currentId = id; 
+        if(chats[id]) chats[id].hasNotif = false; // Clear dot on click
+        window.render(); 
+        refreshSidebar(); 
+    };
+
     window.render = () => {
         const win = document.getElementById("chat-window");
         win.innerHTML = "";
@@ -324,6 +349,7 @@ My interface is built by Meta, but the code behind it isn’t public. Think of m
     }
 
     function save() { localStorage.setItem('my_ai_chats', JSON.stringify(chats)); refreshSidebar(); }
+    
     function refreshSidebar() {
         const list = document.getElementById("history-list");
         list.innerHTML = "";
@@ -331,7 +357,9 @@ My interface is built by Meta, but the code behind it isn’t public. Think of m
             const item = document.createElement("div");
             item.className = `history-item ${id === currentId ? 'active' : ''}`;
             item.onclick = () => window.selectChat(id);
-            item.innerHTML = `<span>${chats[id].title}</span>`;
+            
+            let dotHtml = chats[id].hasNotif ? `<span class="notif-dot"></span>` : "";
+            item.innerHTML = `<span>${chats[id].title}</span> ${dotHtml}`;
             list.appendChild(item);
         });
     }
