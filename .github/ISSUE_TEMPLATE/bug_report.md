@@ -39,7 +39,7 @@ If applicable, add screenshots to help explain your problem.
 - Cosmic AI Version: V34.1
 
 ## Are you using a modded version?
-- [ ] No, I’m on the official site
+- [x] No, I’m on the official site
 - [ ] Yes [we can’t provide support for mods]
 
 ## Additional context
