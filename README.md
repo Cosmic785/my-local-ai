@@ -1,8 +1,8 @@
 <h1 align="center">🚀 Cosmic AI</h1>
-<h3 align="center">Free, Local, Private AI in Your Browser</h3>
+<h3 align="center">🔒 Free, Local, Private AI in Your Browser</h3>
 
 <p align="center">
-  <strong>Your data, your machine, your rules. Don’t hack the HTML.</strong>
+  <strong>💾 Your data, your machine, your rules. 🚫 Don’t hack the HTML.</strong>
 </p>
 
 <p align="center">
@@ -15,55 +15,55 @@
 
 ## ⚠️ We are the official Cosmic AI
 
-**Only use the official version**: https://cosmic785.github.io/Cosmic-AI/
+**✅ Only use the official version**: https://cosmic785.github.io/Cosmic-AI/
 
-Do **NOT** use fake or modded versions. We do not provide support for modified builds.
+**❌ Do NOT** use fake or modded versions. We do not provide support for modified builds.
 
-**Don’t hack the HTML.** Find a bug? Report it, don’t exploit it.
+**🚫 Don’t hack the HTML.** Find a bug? Report it, don’t exploit it.
 
 ## ✨ Features
 
-- **100% Local & Private** — Runs entirely in your browser using WebLLM. No APIs, no servers, no tracking
-- **Smarter AI** — Improved response quality and speed in V34.1
-- **Custom Avatars** — Upload your profile picture
-- **Change Name** — Update your display name anytime
-- **Custom System Prompts** — Control AI behavior and personality
-- **Multiple Models** — Switch between Llama-3, Phi-3, Gemma, and more
-- **Dark/Light Theme** — Rebuilt from scratch in V34.1. Both themes stable
-- **No Sign-up** — Just open and use
+- **🔒 100% Local & Private** — Runs entirely in your browser using WebLLM. No APIs, no servers, no tracking
+- **🧠 Smarter AI** — Improved response quality and speed in V34.1
+- **🖼️ Custom Avatars** — Upload your profile picture
+- **✏️ Change Name** — Update your display name anytime
+- **⚙️ Custom System Prompts** — Control AI behavior and personality
+- **📚 Multiple Models** — Switch between Llama-3, Phi-3, Gemma, and more
+- **🌓 Dark/Light Theme** — Rebuilt from scratch in V34.1. Both themes stable
+- **🚫 No Sign-up** — Just open and use
 
 ## 🆕 What’s New in V34.1
 
-- **GUI Alignment Fixed** — Spacing/overlapping UI issues resolved
-- **Light Theme Rebuilt** — Dark/Light toggle now works properly on all devices
-- **Performance** — Faster model loading and response times
+- **📐 GUI Alignment Fixed** — Spacing/overlapping UI issues resolved
+- **☀️ Light Theme Rebuilt** — Dark/Light toggle now works properly on all devices
+- **⚡ Performance** — Faster model loading and response times
 
 ## 🚀 Quick Start
 
-1. Go to **https://cosmic785.github.io/Cosmic-AI/**
-2. Pick a model — we recommend `Llama-3-8B` or `Phi-3-mini` for mobile
-3. Wait for it to download to your browser cache
-4. Start chatting. Your data never leaves your machine
+1. **🌐 Go to**: https://cosmic785.github.io/Cosmic-AI/
+2. **📚 Pick a model** — we recommend `Llama-3-8B` or `Phi-3-mini` for mobile
+3. **⏳ Wait for it to download** to your browser cache
+4. **💬 Start chatting**. Your data never leaves your machine
 
 ## 🗺️ Roadmap
 
-- [x] GUI spacing/alignment fix — V34.1
-- [x] Light theme rebuild — V34.1
-- [ ] Chat history export/import
-- [ ] Voice input/output
-- [ ] PWA install for mobile
-- [ ] More model options
+- [x] 📐 GUI spacing/alignment fix — V34.1
+- [x] ☀️ Light theme rebuild — V34.1
+- [ ] 💾 Chat history export/import
+- [ ] 🎤 Voice input/output
+- [ ] 📱 PWA install for mobile
+- [ ] 📚 More model options
 
 ## 🐛 Bug Reports
 
-**Before reporting:**
-1. Test on the official site: https://cosmic785.github.io/Cosmic-AI/
-2. We do **NOT** debug modded builds
-3. **Don’t hack the HTML**
+**⚠️ Before reporting:**
+1. **✅ Test on the official site**: https://cosmic785.github.io/Cosmic-AI/
+2. **🚫 We do NOT debug modded builds**
+3. **🚫 Don’t hack the HTML**
 
-**Report here**: [Issues](https://github.com/Cosmic785/Cosmic-AI/issues) → New issue → Bug report
+**📝 Report here**: [Issues](https://github.com/Cosmic785/Cosmic-AI/issues) → New issue → Bug report
 
-Include: Device, OS, Browser, Screenshots, Console errors
+Include: 📱 Device, 💻 OS, 🌐 Browser, 📸 Screenshots, 🖥️ Console errors
 
 ## 💡 Feature Requests
 
@@ -73,22 +73,22 @@ Have an idea? Open a [Feature Request](https://github.com/Cosmic785/Cosmic-AI/is
 
 MIT License — see [LICENSE](LICENSE) file.
 
-**Commercial use**: DM @cosmic785 first. Personal use = free forever.
+**💼 Commercial use**: DM @cosmic785 first. Personal use = free forever.
 
 ## 👥 Credits
 
-| Name | Role | Contribution |
-| --- | --- | --- |
-| **Cosmic** | Project Leader | Wrote all core scripts, built the architecture, leads the project |
-| **Userccv** | Creator | Made the AI & concept, designed the profile/branding |
-| **Nathan** | UI & Testing Lead | Designed the entire UI, handled all V34.1 testing, co-developed features |
+| Icon | Name | Role | Contribution |
+| --- | --- | --- | --- |
+| 👑 | **Cosmic** | Project Leader | 💻 Wrote all core scripts, 🏗️ built the architecture, 🧭 leads the project |
+| 💡 | **Userccv** | Creator | 🤖 Made the AI & concept, 🎨 designed the profile/branding |
+| 🎨 | **Nathan** | UI & Testing Lead | 🖌️ Designed the entire UI, 🧪 handled all V34.1 testing, 🤝 co-developed features |
 
-**Special Thanks**: The Discord Community for bug reports, testing, and feedback.
+**🙏 Special Thanks**: The Discord Community for bug reports, testing, and feedback.
 
 ---
 
 <p align="center">
-  <strong>Your data, your machine, your rules. Don’t hack the HTML.</strong><br>
-  <a href="https://discord.gg/9aRXSCDX4z">Discord</a> •
-  <a href="https://cosmic785.github.io/Cosmic-AI/">Official Site</a>
+  <strong>💾 Your data, your machine, your rules. 🚫 Don’t hack the HTML.</strong><br>
+  <a href="https://discord.gg/9aRXSCDX4z">💬 Discord</a> •
+  <a href="https://cosmic785.github.io/Cosmic-AI/">🌐 Official Site</a>
 </p>
