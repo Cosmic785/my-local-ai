@@ -11,9 +11,6 @@
     <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
     
     <style>
-        /* ============================================================
-           1. CSS VARIABLES & THEMES
-           ============================================================ */
         :root {
             --bg: #131314;
             --sidebar: #1e1f20;
@@ -34,9 +31,6 @@
             font-family: 'Courier New', monospace !important;
         }
 
-        /* ============================================================
-           2. CORE LAYOUT STYLES
-           ============================================================ */
         body {
             font-family: var(--font-main);
             background-color: var(--bg);
@@ -93,20 +87,24 @@
             padding: 6px;
             border-radius: 4px;
             outline: none;
+            width: calc(100% - 14px);
         }
 
+        /* UI ALIGNMENT FIX */
         .settings-btn {
             background: var(--user-bubble);
             color: var(--text);
             border: 1px solid var(--border);
-            padding: 8px;
-            border-radius: 4px;
+            padding: 10px;
+            border-radius: 6px;
             cursor: pointer;
-            font-size: 12px;
+            font-size: 13px;
             text-align: center;
             transition: 0.2s;
             width: 100%;
             margin-bottom: 8px;
+            display: block;
+            box-sizing: border-box;
         }
 
         .settings-btn:hover {
@@ -114,12 +112,7 @@
             border-color: var(--accent);
         }
 
-        /* ============================================================
-           3. SIDEBAR NAVIGATION
-           ============================================================ */
-        #new-chat-container {
-            padding: 10px;
-        }
+        #new-chat-container { padding: 10px; }
 
         .btn-new-chat {
             width: 100%;
@@ -132,11 +125,6 @@
             font-weight: 600;
             font-size: 13px;
             transition: 0.2s;
-        }
-
-        .btn-new-chat:hover {
-            background: var(--menu-hover);
-            border-color: var(--accent);
         }
 
         #history-list {
@@ -157,36 +145,10 @@
             justify-content: space-between;
             align-items: center;
             transition: 0.2s;
-            position: relative;
         }
 
-        .history-item:hover { background: var(--menu-hover); }
         .history-item.active { background: var(--user-bubble); border-left: 2px solid var(--accent); }
 
-        .history-actions {
-            display: none;
-            gap: 6px;
-        }
-
-        .history-item:hover .history-actions {
-            display: flex;
-        }
-
-        .action-icon {
-            opacity: 0.5;
-            cursor: pointer;
-            transition: 0.2s;
-            font-size: 14px;
-        }
-
-        .action-icon:hover {
-            opacity: 1;
-            color: var(--accent);
-        }
-
-        /* ============================================================
-           4. CHAT WINDOW STYLES
-           ============================================================ */
         #main { flex: 1; display: none; flex-direction: column; }
         
         #chat-window {
@@ -218,26 +180,9 @@
             border-radius: 12px;
             font-size: 14.5px;
             line-height: 1.4;
-            font-family: var(--font-main);
         }
 
         .user .content { background: var(--user-bubble); }
-
-        /* Typing Dots Animation */
-        .typing-dots { display: flex; gap: 4px; padding: 10px; align-items: center; }
-        .typing-dots span {
-            width: 6px; height: 6px;
-            background: var(--accent);
-            border-radius: 50%;
-            animation: dotBounce 1.4s infinite ease-in-out both;
-        }
-        .typing-dots span:nth-child(1) { animation-delay: -0.32s; }
-        .typing-dots span:nth-child(2) { animation-delay: -0.16s; }
-
-        @keyframes dotBounce {
-            0%, 80%, 100% { transform: scale(0); }
-            40% { transform: scale(1.0); }
-        }
 
         #input-container { padding: 15px 10%; background: var(--bg); }
         .input-box {
@@ -261,7 +206,7 @@
 <body id="app-body">
 
     <div id="login-overlay">
-        <h1 style="color: white;">Start Login</h1>
+        <h1 style="color: white;">Cosmic AI V34.1</h1>
         <div id="g_id_onload" data-client_id="962541317340-h2tef7ghacll2okk8latem18qbsrs3hd.apps.googleusercontent.com" data-callback="unlockNow"></div>
         <div class="g_id_signin" data-type="standard"></div>
     </div>
@@ -284,12 +229,12 @@
                 
                 <a href="https://github.com/Cosmic785/my-local-ai" target="_blank" style="display:block; margin-top:10px; color:var(--accent); text-decoration:none; font-size:11px; text-align:center;">🐛 Report a Bug</a>
                 
-                <button class="settings-btn" onclick="window.logout()" style="width:100%; background:#800; color:white; border:none; padding:6px; border-radius:4px; cursor:pointer; margin-top:10px;">Logout</button>
+                <button class="settings-btn" onclick="window.logout()" style="background:#800; color:white; border:none; margin-top:10px;">Logout</button>
             </div>
             
             <div id="user-profile-trigger" onclick="window.toggleSettings()" style="padding:10px; display:flex; align-items:center; gap:10px; cursor:pointer;">
                 <div id="user-profile-img" style="width:28px; height:28px; border-radius:50%; background-color:var(--accent); background-size:cover;"></div>
-                <span id="display-name" style="font-size:12px; font-weight: bold;">Cosmic</span>
+                <span id="display-name" style="font-size:13px; font-weight: 800; letter-spacing: 0.3px;">Cosmic Owner</span>
             </div>
         </div>
 
@@ -312,9 +257,6 @@
     </div>
 
 <script>
-    /* ------------------------------------------------------------
-       FRONT-END UI CONTROLLER
-       ------------------------------------------------------------ */
     window.toggleSettings = () => {
         const p = document.getElementById('settings-panel');
         p.style.display = (p.style.display === 'block') ? 'none' : 'block';
@@ -343,7 +285,7 @@
     };
 
     window.logout = () => {
-        if(confirm("Sign out of Cosmic AI?")) {
+        if(confirm("Logout?")) {
             localStorage.removeItem('cosmic_auth_success');
             location.reload();
         }
@@ -362,7 +304,6 @@
             reader.onload = (ev) => {
                 document.getElementById('user-profile-img').style.backgroundImage = `url('${ev.target.result}')`;
                 localStorage.setItem('custom_user_pic', ev.target.result);
-                window.render(); // Refresh chat to show new avatar
             };
             reader.readAsDataURL(file);
         }
@@ -375,9 +316,6 @@
 </script>
 
 <script type="module">
-    /* ------------------------------------------------------------
-       CORE AI MODULE
-       ------------------------------------------------------------ */
     import { CreateMLCEngine } from "https://esm.run/@mlc-ai/web-llm";
     
     let engine, isGenerating = false, currentId = null;
@@ -386,15 +324,16 @@
     window.addEventListener('load', async () => {
         refreshSidebar();
         try {
+            // FASTER ENGINE INITIALIZATION
             engine = await CreateMLCEngine("Llama-3.2-1B-Instruct-q4f16_1-MLC", {
                 initProgressCallback: (p) => { 
-                    document.getElementById("status").innerText = `LOADING BRAIN: ${Math.round(p.progress * 100)}%`; 
+                    document.getElementById("status").innerText = `CORE: ${Math.round(p.progress * 100)}%`; 
                 }
             });
             document.getElementById("status").innerText = "COSMIC CORE ONLINE";
             document.getElementById("userInput").disabled = false;
         } catch (e) {
-            document.getElementById("status").innerText = "CORE ERROR - RELOAD";
+            document.getElementById("status").innerText = "CORE ERROR";
         }
     });
 
@@ -417,14 +356,16 @@
 
         const row = addRowUI("", "ai");
         const contentDiv = row.querySelector(".content");
-        contentDiv.innerHTML = `<div class="typing-dots"><span></span><span></span><span></span></div>`;
+        contentDiv.innerHTML = `<i>Thinking...</i>`;
 
         try {
+            // FASTER RESPONSE CONFIG
             const chunks = await engine.chat.completions.create({
                 messages: [
-                    { role: "system", content: "You are Cosmic AI V34.1. Be helpful and clear." },
+                    { role: "system", content: "Short, fast, helpful responses." },
                     ...chats[targetId].history
                 ],
+                temperature: 0.6,
                 stream: true
             });
 
@@ -433,13 +374,11 @@
                 fullStr += chunk.choices[0]?.delta?.content || "";
                 if (currentId === targetId) {
                     contentDiv.innerHTML = marked.parse(fullStr);
-                    contentDiv.querySelectorAll('pre code').forEach(el => hljs.highlightElement(el));
                     document.getElementById('chat-window').scrollTop = document.getElementById('chat-window').scrollHeight;
                 }
             }
             
             chats[targetId].history.push({ role: "assistant", content: fullStr });
-            chats[targetId].hasNotif = (currentId !== targetId);
             save();
         } finally { 
             isGenerating = false; 
@@ -456,29 +395,7 @@
 
     window.selectChat = (id) => {
         currentId = id;
-        if(chats[id]) chats[id].hasNotif = false;
-        save();
         window.render();
-    };
-
-    window.renameChat = (id, e) => {
-        e.stopPropagation();
-        const n = prompt("Rename this chat:", chats[id].title);
-        if (n && n.trim() !== "") {
-            chats[id].title = n.trim();
-            save();
-            refreshSidebar();
-        }
-    };
-
-    window.deleteChat = (id, e) => {
-        e.stopPropagation();
-        if (confirm("Delete this conversation permanently?")) {
-            delete chats[id];
-            if (currentId === id) currentId = null;
-            save();
-            window.render();
-        }
     };
 
     window.render = () => {
@@ -496,14 +413,10 @@
         row.className = `row ${type}`;
         const avatarUrl = (type === 'ai') ? 'https://www.meta.ai/images/cot_logo_static/orbit.png' : (localStorage.getItem('custom_user_pic') || '');
         const style = avatarUrl ? `style="background-image: url('${avatarUrl}')"` : '';
-        row.innerHTML = `<div class="avatar ${type}-avatar" ${style}></div><div class="content"></div>`;
+        row.innerHTML = `<div class="avatar" ${style}></div><div class="content"></div>`;
         const c = row.querySelector(".content");
-        if (type === 'ai') {
-            c.innerHTML = marked.parse(text || '');
-            c.querySelectorAll('pre code').forEach(block => hljs.highlightElement(block));
-        } else {
-            c.innerText = text;
-        }
+        if (type === 'ai') { c.innerHTML = marked.parse(text || ''); } 
+        else { c.innerText = text; }
         document.getElementById("chat-window").appendChild(row);
         return row;
     }
@@ -517,20 +430,12 @@
             const item = document.createElement("div");
             item.className = `history-item ${id === currentId ? 'active' : ''}`;
             item.onclick = () => window.selectChat(id);
-            item.innerHTML = `
-                <span class="history-title" style="flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${chats[id].title}</span>
-                ${chats[id].hasNotif ? '<span class="notif-dot"></span>' : ''}
-                <div class="history-actions">
-                    <span class="action-icon" onclick="window.renameChat('${id}', event)">✏️</span>
-                    <span class="action-icon" onclick="window.deleteChat('${id}', event)">🗑️</span>
-                </div>
-            `;
+            item.innerHTML = `<span>${chats[id].title}</span>`;
             list.appendChild(item);
         });
     }
 
     document.getElementById("userInput").addEventListener("keypress", (e) => { if(e.key === "Enter") window.ask(); });
-    window.render = window.render; // Ensure accessibility
 </script>
 </body>
 </html>
