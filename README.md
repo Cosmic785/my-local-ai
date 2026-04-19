@@ -1,36 +1,41 @@
 # Cosmic AI V34.1 🚀
 
-**Your local, private AI assistant — now with profiles, prompts, and multi-model**
+**Your local, private AI — now smarter with profiles, prompts, and multi-model**
 
 [Live Demo](https://cosmic785.github.io/my-local-ai/) · [Report a Bug](https://github.com/cosmic785/my-local-ai/issues)
 
-Cosmic AI runs entirely in your browser. No data leaves your machine. V34.1 adds full customization.
+V34.1 focuses on customization and brain upgrades. Still runs entirely in your browser.
 
-### ✨ Features
+### ✨ What’s New in V34.1
 
-- **100% Local & Private**: Browser-based. No API keys, no tracking
-- **Custom Profiles**: Set your username + upload avatar
-- **Custom System Prompts**: Control AI behavior. Make it sarcastic, professional, a pirate, whatever you want
-- **Multiple Model Support**: Switch between local models you have installed
-- **Theme Support**: Light/dark mode
-- **Open Source**: Fork it, modify it, self-host it
+- **Smarter AI**: Improved response quality and speed under the hood
+- **Change Name Button**: Sidebar button to update your display name anytime
+- **Custom Avatar**: Upload your profile picture via "Change Avatar"
+- **Custom System Prompts**: Control AI behavior and personality
+- **Multiple Model Support**: Switch between local models in settings
+
+### 🐛 Known Issues
+
+- **GUI Alignment**: Some UI elements are off/overlapping right now. Purely visual — doesn’t affect chat. Fix planned for V34.2
 
 ### 🗺️ Roadmap
 
 - [x] Changeable username
 - [x] Custom avatar upload 
 - [x] Custom system prompts
-- [ ] Multiple model support
+- [x] Multiple model support
+- [x] Smarter backend responses
+- [ ] GUI spacing/alignment fix — V34.2
 - [ ] Chat history export/import
 - [ ] Voice input/output
 - [ ] PWA install
 
-### ⚙️ How to Use New Features
+### ⚙️ Using V34.1
 
-**User Name**: Click the name field to change it 
-**Avatar**: Click "Change Avatar" and upload JPG/PNG 
-**System Prompt**: Open settings → paste your custom instructions. Ex: "You are a grumpy tech support agent from 2005" 
-**Switch Models**: If you have multiple local models running, select from the dropdown in settings
+**Change Name**: Click "Change Name" in the left sidebar 
+**Change Avatar**: Click "Change Avatar" and upload JPG/PNG 
+**System Prompt**: Settings → add your custom instructions 
+**Switch Models**: Dropdown in settings if multiple models detected
 
 ### 📄 License
 
