@@ -103,7 +103,7 @@ MIT License — see [LICENSE](LICENSE) file.
 > :compass: Handles core development and architecture
 > :closed_lock_with_key: Built security & anti-exploit systems
 > :zap: Implements features and maintains codebase
-> :warning: Userccv did not update this one tho
+> :warning: Userccv Did not update This one
 > 
 > *Userccv leads development under Cosmic.*
 
@@ -136,11 +136,3 @@ MIT License — see [LICENSE](LICENSE) file.
 :floppy_disk: *Your data, your machine, your rules.*
 
 ═══════════════════════════════════════
-
----
-
-<p align="center">
-  <strong>💾 Your data, your machine, your rules. 🚫 Don’t hack the HTML.</strong><br>
-  <a href="https://discord.gg/9aRXSCDX4z">💬 Discord</a> •
-  <a href="https://cosmic785.github.io/Cosmic-AI/">🌐 Official Site</a>
-</p>
