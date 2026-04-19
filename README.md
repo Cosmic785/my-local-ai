@@ -56,6 +56,16 @@ To reset everything: Clear site data for `cosmic785.github.io` in browser settin
 - [x] Multiple model support
 - [ ] PWA install
 
+### 🔨 Working on
+
+- [x] Changeable username
+- [ ] Custom avatar upload
+- [x] Chat history export/import
+- [ ] Custom system prompts
+- [x] Voice input/output
+- [ ] Multiple model support
+- [x] PWA install
+
 ### 🤝 Contributing
 
 Found a bug or have an idea?
