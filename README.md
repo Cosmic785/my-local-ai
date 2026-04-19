@@ -65,12 +65,11 @@ Breaking the app hurts everyone using it.
 MIT © 2026 cosmic785
 
 **Special Thanks:**
-- **Nathan** — For the UI design help and testing V34.1. Your feedback and design eye made this update happen.
+- **Nathan** — Wrote half of the script, handled UI design, and tested V34.1. This update wouldn’t exist without you.
 - **The Discord Community** — For reporting bugs, testing builds, and sticking with us through the fixes.
 - **Everyone using Cosmic AI** — Thank you for supporting a free, local, private AI.
 
 ---
-
 **We are the official Cosmic AI.**
 **Do not go to fake or modded versions.** Only use: https://cosmic785.github.io/my-local-ai/
 **Report bugs**: https://github.com/Cosmic785/my-local-ai
