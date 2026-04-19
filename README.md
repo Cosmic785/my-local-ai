@@ -79,12 +79,9 @@ MIT License
 
 | Icon | Name | Role | Contribution |
 | --- | --- | --- | --- |
-| 👑 | **Cosmic** | Project Leader | 💻 Wrote all core scripts, 🏗️ built the architecture, 🧭 leads the project |
-| 💡 | **Userccv** | Creator | 🤖 Made the AI & concept, 🎨 designed the profile/branding |
+| 💡 | **Userccv** | **Creator & Founder** | 🤖 Made the AI & concept, 🎨 designed the profile/branding, 🔥 started the project |
+| 👑 | **Cosmic** | Project Leader | 💻 Wrote all core scripts, 🏗️ built the architecture, 🧭 leads development |
 | 🎨 | **Nathan** | UI & Testing Lead | 🖌️ Designed the entire UI, 🧪 handled all V34.1 testing, 🤝 co-developed features |
-
-**🙏 Special Thanks**: The Discord Community for bug reports, testing, and feedback.
-
 ---
 
 <p align="center">
