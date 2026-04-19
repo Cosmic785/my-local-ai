@@ -78,4 +78,4 @@ MIT © 2026 cosmic785
 Modded builds are not supported, may be unsafe, and violate usage rules. 
 No modding or hacking the app. Don’t hack the HTML.
 
-*Your data, your machine, your rules.*
+
