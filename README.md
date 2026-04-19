@@ -1,80 +1,40 @@
-# Cosmic AI V34 🚀
+# Cosmic AI V34.1 🚀
 
-**Your local, private AI assistant running right in the browser**
+**Your local, private AI assistant — now with profiles, prompts, and multi-model**
 
 [Live Demo](https://cosmic785.github.io/my-local-ai/) · [Report a Bug](https://github.com/cosmic785/my-local-ai/issues)
 
-Cosmic AI V34 is a lightweight, client-side AI chat interface designed for privacy and speed. No data leaves your machine. Make it yours with custom profiles, themes, and more.
+Cosmic AI runs entirely in your browser. No data leaves your machine. V34.1 adds full customization.
 
-### 🔥 What's New in V34.1
+### ✨ Features
 
-**Profile Update — Coming Next Release**
-- **Change Your Name**: Update your display name anytime from settings. No more being stuck with the first name you picked
-- **Upload Your Profile Picture**: Ditch the default avatar. Upload your own image to personalize your chat experience
-- **Auto-Save**: All profile changes save instantly to your browser. Your setup follows you every time you open Cosmic AI
-
-### ✨ Core Features
-
-- **100% Local & Private**: Runs entirely in your browser. No API keys, no tracking
-- **Custom Profiles**: Set your username + avatar to personalize the interface
-- **Theme Support**: Light/dark mode toggle for day and night sessions
-- **Fast & Minimal**: Clean UI focused on conversation, not clutter
+- **100% Local & Private**: Browser-based. No API keys, no tracking
+- **Custom Profiles**: Set your username + upload avatar
+- **Custom System Prompts**: Control AI behavior. Make it sarcastic, professional, a pirate, whatever you want
+- **Multiple Model Support**: Switch between local models you have installed
+- **Theme Support**: Light/dark mode
 - **Open Source**: Fork it, modify it, self-host it
-
-### 🛠️ Tech Stack
-
-| Component | Details |
-| --- | --- |
-| Frontend | HTML, CSS, JavaScript |
-| Hosting | GitHub Pages |
-| Storage | Browser localStorage for profile + settings + chat |
-| AI Engine | Local inference — update this to match your backend |
-
-### 🚀 Quick Start
-
-1. Go to https://cosmic785.github.io/my-local-ai/
-2. Click **Upload Profile** to set your display name
-3. Pick your **Theme**
-4. Start chatting
-
-### ⚙️ Profile Settings
-
-**User Name**: Changes how the AI addresses you and how you appear in chat
-**Avatar**: Upload JPG/PNG. Stored locally in your browser
-**Theme**: Persists across sessions
-
-To reset everything: Clear site data for `cosmic785.github.io` in browser settings.
 
 ### 🗺️ Roadmap
 
-- [ ] Changeable username
-- [ ] Custom avatar upload
-- [ ] Chat history export/import
+- [x] Changeable username
+- [x] Custom avatar upload 
 - [x] Custom system prompts
-- [ ] Voice input/output
 - [x] Multiple model support
+- [ ] Chat history export/import
+- [ ] Voice input/output
 - [ ] PWA install
 
-### 🔨 Working on
+### ⚙️ How to Use New Features
 
-- [x] Changeable username
-- [ ] Custom avatar upload
-- [x] Chat history export/import
-- [ ] Custom system prompts
-- [x] Voice input/output
-- [ ] Multiple model support
-- [x] PWA install
-
-### 🤝 Contributing
-
-Found a bug or have an idea?
-1. [Open an issue](https://github.com/cosmic785/my-local-ai/issues)
-2. Fork the repo and submit a PR
+**User Name**: Click the name field to change it 
+**Avatar**: Click "Change Avatar" and upload JPG/PNG 
+**System Prompt**: Open settings → paste your custom instructions. Ex: "You are a grumpy tech support agent from 2005" 
+**Switch Models**: If you have multiple local models running, select from the dropdown in settings
 
 ### 📄 License
 
 MIT © 2026 cosmic785
 
 ---
-
-*Built for privacy-first AI. Your data, your machine, your rules.*
+*Your data, your machine, your rules.*
