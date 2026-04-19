@@ -67,13 +67,13 @@ Include: 📱 Device, 💻 OS, 🌐 Browser, 📸 Screenshots, 🖥️ Console e
 
 ## 💡 Feature Requests
 
-Have an idea? Open a [Feature Request](https://github.com/Cosmic785/Cosmic-AI/issues) or discuss in [Discussions](https://github.com/Cosmic785/Cosmic-AI/discussions).
+Have an idea? Open a [Feature Request](https://github.com/Cosmic785/Cosmic-AI/issues)
 
 ## 📜 License
 
-MIT License — see [LICENSE](LICENSE) file.
+MIT License
 
-**💼 Commercial use**: DM @Cosmic first. Personal use = free forever.
+**@Cosmic785**
 
 ## 👥 Credits
 
