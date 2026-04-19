@@ -63,7 +63,7 @@
 
 **📝 Report here**: [Issues](https://github.com/Cosmic785/Cosmic-AI/issues) → New issue → Bug report
 
-Include: 📱 Device, 💻 OS, 🌐 Browser, 📸 Screenshots, 🖥️ Console errors
+Include: 📱 Device, 💻 OS, 🌐 Browser,
 
 ## 💡 Feature Requests
 
