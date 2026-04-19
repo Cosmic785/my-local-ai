@@ -17,7 +17,7 @@ V34.1 focuses on customization and brain upgrades. Still runs entirely in your b
 ### 🐛 Known Issues
 
 - **GUI Alignment**: Some UI elements are off/overlapping right now. Purely visual — doesn’t affect chat. Fix planned for V34.2
-- **Cosmic Ai V34.2 Fix**: Known Issue V34.1: GUI spacing/alignment is off in a few spots. We’re aware and it’s getting fixed in V34.2. Doesn’t affect functionality. Thanks for your patience!
+
 ### 🗺️ Roadmap
 
 - [x] Changeable username
