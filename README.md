@@ -2,7 +2,7 @@
 
 **Your local, private AI — now fixed, with light theme back**
 
-[Live Demo](https://cosmic785.github.io/my-local-ai/) · [Report a Bug](https://github.com/cosmic785/my-local-ai/issues) · [Discord]([your-discord-link](https://discord.gg/9aRXSCDX4z))
+[Live Demo](https://cosmic785.github.io/my-local-ai/) · [Report a Bug](https://github.com/cosmic785/my-local-ai/issues) · [Discord]([your-discord-link])
 
 Cosmic AI runs entirely in your browser. No data leaves your machine.
 
