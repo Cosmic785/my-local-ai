@@ -60,6 +60,10 @@ Hack the app instead of reporting = no support + ban.
 
 MIT © 2026 cosmic785
 
+**Credits:**
+- **Lead Developer**: cosmic785
+- **AI Development & Light Theme Rebuild**: Nathan — Helped build the AI backend, optimize responses, and fix V34.1
+
 ---
 **We are the official Cosmic AI.**
 **Do not go to fake or modded versions.** Only use: https://cosmic785.github.io/my-local-ai/
