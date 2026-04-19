@@ -71,9 +71,9 @@ Have an idea? Open a [Feature Request](https://github.com/Cosmic785/Cosmic-AI/is
 
 ## 📜 License
 
-MIT License
+MIT License — see [LICENSE](LICENSE) file.
 
-**@Cosmic785**
+**💼 Commercial use**: DM @Cosmic first. Personal use = free forever.
 
 ## 👥 Credits
 
@@ -99,7 +99,7 @@ MIT License
 > **Userccv** 
 > :construction_site: Project Lead Developer
 > ━━━━━━━━━━━━━━━━━━━━━━
-> :scroll: Wrote 23% of the base scripts & backend logic 
+> :scroll: Wrote 100% of the base scripts & backend logic 
 > :compass: Handles core development and architecture
 > :closed_lock_with_key: Built security & anti-exploit systems
 > :zap: Implements features and maintains codebase
