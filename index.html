@@ -166,6 +166,10 @@
         .history-item.active { background: var(--user-bubble); border-left: 2px solid var(--accent); }
 
         .history-actions { display: none; gap: 6px; }
+        .history-item:hover { background: var(--menu-hover); }
+        .history-item.active { background: var(--user-bubble); border-left: 2px solid var(--accent); }
+
+        .history-actions { display: none; gap: 6px; }
         .history-item:hover .history-actions { display: flex; }
 
         .action-icon { opacity: 0.6; cursor: pointer; font-size: 14px; }
@@ -242,6 +246,16 @@
                     <select class="settings-select" onchange="window.updateTheme(this.value)">
                         <option value="default">Dark Mode</option>
                         <option value="light-theme">ISO Light</option>
+                    </select>
+                </div>
+
+                <div class="settings-row">
+                    <label style="font-size: 10px; opacity: 0.7;">AI MODEL</label>
+                    <select class="settings-select" id="model-select" onchange="window.changeModel(this.value)">
+                        <option value="Llama-3.2-1B-Instruct-q4f16_1-MLC">Llama 3.2 1B - Fast 600MB</option>
+                        <option value="Llama-3.2-3B-Instruct-q4f16_1-MLC">Llama 3.2 3B - Smart 1.9GB</option>
+                        <option value="Phi-3.5-mini-instruct-q4f16_1-MLC">Phi 3.5 Mini - Coder 2.2GB</option>
+                        <option value="gemma-2-2b-it-q4f16_1-MLC">Gemma 2 2B - Google 1.6GB</option>
                     </select>
                 </div>
 
@@ -349,7 +363,7 @@
     window.addEventListener('load', async () => {
         refreshSidebar();
         try {
-            engine = await CreateMLCEngine("Llama-3.2-1B-Instruct-q4f16_1-MLC", {
+            engine = await CreateMLCEngine(localStorage.getItem('cosmic_model') || "Llama-3.2-1B-Instruct-q4f16_1-MLC", {
                 initProgressCallback: (p) => { 
                     document.getElementById("status").innerText = `CORE: ${Math.round(p.progress * 100)}%`; 
                 }
@@ -359,7 +373,22 @@
         } catch (e) {
             document.getElementById("status").innerText = "CORE ERROR";
         }
+        const cachedModel = localStorage.getItem('cosmic_model');
+        if (cachedModel) document.getElementById('model-select').value = cachedModel;
     });
+
+    window.changeModel = async (modelId) => {
+        document.getElementById("status").innerText = `LOADING MODEL...`;
+        document.getElementById("userInput").disabled = true;
+        engine = await CreateMLCEngine(modelId, {
+            initProgressCallback: (p) => { 
+                document.getElementById("status").innerText = `CORE: ${Math.round(p.progress * 100)}%`; 
+            }
+        });
+        document.getElementById("status").innerText = "COSMIC CORE ONLINE";
+        document.getElementById("userInput").disabled = false;
+        localStorage.setItem('cosmic_model', modelId);
+    };
 
     window.ask = async () => {
         const input = document.getElementById("userInput");
@@ -385,7 +414,7 @@
         try {
             const chunks = await engine.chat.completions.create({
                 messages: [
-                    { role: "system", content: "You are Cosmic AI V34.1." },
+                    { role: "system", content: "You are Cosmic AI V34." },
                     ...chats[targetId].history
                 ],
                 stream: true
