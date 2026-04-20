@@ -16,7 +16,7 @@
 ## 📝 Last Edited By
 
 **@Userccv** — 2026-04-20
-> Updated README credits format per Cosmic's request
+> Updated README credits format per Cosmic's request, removed Nathan
 
 ---
 
@@ -64,9 +64,10 @@
 ## 📋 Edit History
 
 | Date | Section | Change | Edited By |
-| --- | --- | --- | --- |
+| --- | --- |
 | 2026-04-20 | Credits | Replaced table with Discord-style format | @Userccv |
 | 2026-04-20 | Credits > Userccv | Added "Userccv updated this one" note | @Userccv |
+| 2026-04-20 | Credits | Removed Nathan per Cosmic's request | @Userccv |
 | 2026-04-20 | Roles | Confirmed Cosmic = Owner, Userccv = Lead Dev | @Userccv |
 
 ## 🐛 Bug Reports
@@ -121,20 +122,6 @@ MIT License — see [LICENSE](LICENSE) file.
 > :white_check_mark: Userccv updated this one
 > 
 > *Userccv leads development under Cosmic.*
-
-═══════════════════════════════════════
-
-## :art: UI & TESTING LEAD
-> **Nathan**
-> :paintbrush: Co-Developer — V34.1
-> ━━━━━━━━━━━━━━━━━━━━━━
-> :frame_photo: Designed the ENTIRE user interface
-> :computer: Wrote half of the V34.1 script alongside Cosmic
-> :test_tube: Led all testing & QA for V34.1 release
-> :sunny: Rebuilt the Light Theme from scratch
-> :triangular_ruler: Fixed all GUI alignment/overlapping issues
->
-> *V34.1 wouldn’t exist without Nathan’s work.*
 
 ═══════════════════════════════════════
 
