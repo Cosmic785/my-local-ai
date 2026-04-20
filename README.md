@@ -15,8 +15,8 @@
 
 ## 📝 Last Edited By
 
-**@Cosmic** — 2026-04-20
-> Updated credits to Discord format, set Cosmic as Owner, added "Userccv Did not update This one" note
+**@Userccv** — 2026-04-20
+> Updated credits format and added edit tracking
 
 ---
 
@@ -65,9 +65,9 @@
 
 | Date | Section | Change | Edited By |
 | --- | --- | --- | --- |
-| 2026-04-20 | Credits | Replaced table with Discord-style format | @Cosmic |
-| 2026-04-20 | Credits > Userccv | Added "Userccv Did not update This one" | @Cosmic |
-| 2026-04-20 | Roles | Set Cosmic = Owner, Userccv = Lead Dev | @Cosmic |
+| 2026-04-20 | Credits | Replaced table with Discord-style format | @Userccv |
+| 2026-04-20 | Credits > Userccv | Added "Userccv updated this one" note | @Userccv |
+| 2026-04-20 | Roles | Set Cosmic = Owner, Userccv = Lead Dev | @Userccv |
 
 ## 🐛 Bug Reports
 
@@ -118,7 +118,7 @@ MIT License — see [LICENSE](LICENSE) file.
 > :compass: Handles core development and architecture
 > :closed_lock_with_key: Built security & anti-exploit systems
 > :zap: Implements features and maintains codebase
-> :warning: Userccv Did not update This one
+> :white_check_mark: Userccv updated this one
 > 
 > *Userccv leads development under Cosmic.*
 
