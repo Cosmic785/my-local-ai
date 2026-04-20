@@ -16,7 +16,7 @@
 ## 📝 Last Edited By
 
 **@Userccv** — 2026-04-20
-> Updated credits format and added edit tracking
+> Updated README credits format per Cosmic's request
 
 ---
 
@@ -67,7 +67,7 @@
 | --- | --- | --- | --- |
 | 2026-04-20 | Credits | Replaced table with Discord-style format | @Userccv |
 | 2026-04-20 | Credits > Userccv | Added "Userccv updated this one" note | @Userccv |
-| 2026-04-20 | Roles | Set Cosmic = Owner, Userccv = Lead Dev | @Userccv |
+| 2026-04-20 | Roles | Confirmed Cosmic = Owner, Userccv = Lead Dev | @Userccv |
 
 ## 🐛 Bug Reports
 
