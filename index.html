@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cosmic AI V34.1</title>
     
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/github-dark.min.css">
@@ -13,9 +14,9 @@
     
     <style>
         /* ============================================================
-           THEME VARIABLES
+           THEME VARIABLES - META AI STYLE
            ============================================================ */
-                :root {
+        :root {
             --bg: #0c0c0f;
             --sidebar: #13141a;
             --text: #ececf1;
@@ -71,15 +72,15 @@
             background: var(--sidebar);
             display: none;
             flex-direction: column;
-            border-right: 1px solid var(--border);
+            border-right: none;
         }
 
         #top-menu {
-            background: var(--settings-bg);
-            margin: 10px;
+            background: transparent;
+            margin: 12px;
             border-radius: 8px;
             padding: 5px 0;
-            border: 1px solid var(--border);
+            border: none;
         }
 
         #settings-panel {
@@ -134,14 +135,18 @@
 
        .btn-new-chat {
             width: 100%;
-            background: var(--user-bubble);
-            color: var(--text);
-            border: 1px solid var(--border);
+            background: var(--meta-gradient);
+            color: #fff;
+            border: none;
             padding: 10px;
             border-radius: 8px;
             cursor: pointer;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 13px;
+        }
+       .btn-new-chat:hover {
+            opacity: 0.9;
+            border: none;
         }
 
         #history-list {
@@ -228,7 +233,10 @@
             border: 1px solid var(--border);
         }
 
-       .ai-avatar { background-image: url('https://www.meta.ai/images/cot_logo_static/orbit.png'); }
+       .ai-avatar { 
+            background: var(--meta-gradient);
+            border: none;
+        }
 
        .content {
             max-width: 85%;
@@ -238,7 +246,10 @@
             line-height: 1.4;
         }
 
-       .user.content { background: var(--user-bubble); }
+       .user.content { 
+            background: var(--user-bubble); 
+            border: 1px solid var(--border);
+        }
 
         #input-container { padding: 15px 10%; background: var(--bg); }
        .input-box {
@@ -255,7 +266,15 @@
         }
 
         #sendBtn {
-            background: none; border: none; color: var(--accent); cursor: pointer; font-size: 22px; padding-left: 10px;
+            background: var(--meta-gradient); 
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            border: none; 
+            cursor: pointer; 
+            font-size: 22px; 
+            padding-left: 10px;
+            font-weight: 900;
         }
     </style>
 </head>
@@ -298,7 +317,7 @@
             </div>
             
             <div id="user-profile-trigger" onclick="window.toggleSettings()" style="padding:10px; display:flex; align-items:center; gap:10px; cursor:pointer;">
-                <div id="user-profile-img" style="width:28px; height:28px; border-radius:50%; background-color:var(--accent); background-size:cover;"></div>
+                <div id="user-profile-img" style="width:28px; height:28px; border-radius:50%; background: var(--meta-gradient); background-size:cover;"></div>
                 <span id="display-name" style="font-size:13px; font-weight: 800;">Cosmic Owner</span>
             </div>
         </div>
@@ -503,7 +522,7 @@
             const chunks = await engine.chat.completions.create({
                 messages: [
                     { role: "system", content: "You are Cosmic AI V34.1." },
-                   ...chats[targetId].history
+                  ...chats[targetId].history
                 ],
                 stream: true
             });
@@ -570,9 +589,9 @@
     function addRowUI(text, type) {
         const row = document.createElement("div");
         row.className = `row ${type}`;
-        const avatarUrl = (type === 'ai')? 'https://www.meta.ai/images/cot_logo_static/orbit.png' : (localStorage.getItem('custom_user_pic') || '');
+        const avatarUrl = (type === 'ai')? '' : (localStorage.getItem('custom_user_pic') || '');
         const style = avatarUrl? `style="background-image: url('${avatarUrl}')"` : '';
-        row.innerHTML = `<div class="avatar" ${style}></div><div class="content"></div>`;
+        row.innerHTML = `<div class="avatar ${type === 'ai'? 'ai-avatar' : ''}" ${style}></div><div class="content"></div>`;
         const c = row.querySelector(".content");
         if (type === 'ai') { c.innerHTML = marked.parse(text || ''); } 
         else { c.innerText = text; }
