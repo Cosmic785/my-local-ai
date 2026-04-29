@@ -1,0 +1,19 @@
+## 🚧 Known Issues
+
+Cosmic AI is still in active development. You might run into bugs, especially on mobile. 
+
+**Mobile issues we’re aware of:**
+- Model loading can fail on some iOS/Android browsers
+- UI scaling bugs on small screens  
+- WebLLM crashes if you tab away too long
+
+**If Cosmic AI isn’t working for you:**
+1. Try desktop Chrome/Edge first — it’s the most stable
+2. Clear site data + reload if models get stuck
+3. Still broken? Join our Discord and drop a bug report: https://discord.gg/MGcayrSDzw
+
+We push fixes constantly. V34.1.1 just shipped Meta theme + null safety patches.
+
+Your data, your machine, your rules 💾
+
+- Cosmic
