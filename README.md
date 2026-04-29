@@ -15,7 +15,7 @@
 
 ## 📝 Last Edited By
 
-**@Userccv** — 2026-04-24
+**@Cosmic785** — 2026-04-24
 > Updated V34.1.1 with Meta AI styling, feedback button, and stability fixes
 
 ---
@@ -65,6 +65,34 @@
 3. **⏳ Wait for it to download** to your browser cache — progress bar shown in V34.1
 4. **💬 Start chatting**. Your data never leaves your machine
 
+## 🐛 Bugs That We Know Of
+
+Cosmic AI is in active development. Here’s what’s broken right now:
+
+### **📱 Mobile**
+- **iOS Safari/Chrome**: Model downloads can freeze or crash the tab on devices with <4GB RAM
+- **Android**: UI cuts off on screens <360px wide, keyboard covers the input box
+- **All mobile**: Switching apps/tabs while model is loading often kills WebLLM — you’ll have to reload
+- **Light theme on mobile**: Toggle sometimes doesn’t repaint until you scroll
+
+### **🖥️ Desktop**
+- **Firefox**: WebGPU support is experimental. Use Chrome/Edge for stability
+- **Low RAM devices**: `Llama-3-8B` will fail to load under 6GB available memory. Use `Phi-3-mini` instead
+- **Context menu**: On very small windows, menus can still clip despite V34.1.1 fixes
+
+### **⚙️ General**
+- **First load**: Large models show 0% for 10-30s before progress starts. It’s downloading, just be patient
+- **Old saves**: Chats from pre-V34 might throw `pinned` errors. V34.1.1 added null safety but refresh if you see it
+- **Feedback button**: Links to YouTube placeholder for now — proper form coming later
+
+**If Cosmic AI doesn’t work for you:**
+Please go to our Discord and open a ticket: https://discord.gg/MGcayrSDzw
+Include: 📱 Device, 💻 OS, 🌐 Browser, 📸 Screenshots, 🖥️ Console errors
+
+Desktop Chrome/Edge is the most stable. We ship fixes weekly.
+
+- Cosmic
+
 ## 🗺️ Roadmap
 
 - [x] 📐 GUI spacing/alignment fix — V34.1
@@ -86,7 +114,7 @@
 2. **🚫 We do NOT debug modded builds**
 3. **🚫 Don’t hack the HTML**
 
-**📝 Report here**: [Issues](https://github.com/Cosmic785/Cosmic-AI/issues) → New issue → Bug report
+**📝 Report here**: [Issues]((https://github.com/Cosmic785/Cosmic-AI)) → New issue → Bug report
 
 Include: 📱 Device, 💻 OS, 🌐 Browser, 📸 Screenshots, 🖥️ Console errors
 
