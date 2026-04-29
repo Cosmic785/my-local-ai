@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.gh.io/highlightjs/cdn-release@11.9.0/build/styles/github-dark.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/github-dark.min.css">
     <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
 
     <style>
@@ -91,7 +91,7 @@
             overflow-y: auto;
         }
 
-      .settings-row {
+     .settings-row {
             margin-bottom: 12px;
             display: flex;
             flex-direction: column;
@@ -99,7 +99,7 @@
             font-size: 12px;
         }
 
-      .settings-select {
+     .settings-select {
             background: var(--bg);
             border: 1px solid var(--border);
             color: var(--text);
@@ -110,7 +110,7 @@
             font-size: 12px;
         }
 
-      .settings-btn {
+     .settings-btn {
             background: var(--user-bubble);
             color: var(--text);
             border: 1px solid var(--border);
@@ -127,7 +127,7 @@
             text-decoration: none;
         }
 
-      .settings-btn:hover {
+     .settings-btn:hover {
             background: var(--menu-hover);
             border-color: var(--accent);
         }
@@ -135,7 +135,7 @@
         /* SIDEBAR CHATS */
         #new-chat-container { padding: 10px; }
 
-      .btn-new-chat {
+     .btn-new-chat {
             width: 100%;
             background: var(--meta-gradient);
             color: #fff;
@@ -146,7 +146,7 @@
             font-weight: 700;
             font-size: 13px;
         }
-      .btn-new-chat:hover {
+     .btn-new-chat:hover {
             opacity: 0.9;
         }
 
@@ -159,7 +159,7 @@
             gap: 4px;
         }
 
-      .history-item {
+     .history-item {
             padding: 8px 10px;
             border-radius: 6px;
             font-size: 13px;
@@ -170,16 +170,16 @@
             transition: 0.2s;
         }
 
-      .history-item:hover { background: var(--menu-hover); }
-      .history-item.active { background: var(--user-bubble); border-left: 2px solid var(--accent); }
+     .history-item:hover { background: var(--menu-hover); }
+     .history-item.active { background: var(--user-bubble); border-left: 2px solid var(--accent); }
 
-      .history-actions { display: none; gap: 6px; }
-      .history-item:hover.history-actions { display: flex; }
+     .history-actions { display: none; gap: 6px; }
+     .history-item:hover.history-actions { display: flex; }
 
-       .action-icon { opacity: 0.6; cursor: pointer; font-size: 14px; }
-       .action-icon:hover { opacity: 1; color: var(--accent); }
+      .action-icon { opacity: 0.6; cursor: pointer; font-size: 14px; }
+      .action-icon:hover { opacity: 1; color: var(--accent); }
 
-       .context-menu {
+      .context-menu {
             position: fixed;
             background: var(--settings-bg);
             border: 1px solid var(--border);
@@ -190,7 +190,7 @@
             display: none;
             min-width: 140px;
         }
-       .context-menu-item {
+      .context-menu-item {
             padding: 8px 14px;
             font-size: 13px;
             cursor: pointer;
@@ -198,13 +198,13 @@
             align-items: center;
             gap: 10px;
         }
-       .context-menu-item:hover {
+      .context-menu-item:hover {
             background: var(--menu-hover);
         }
-       .context-menu-item.delete {
+      .context-menu-item.delete {
             color: #ff4d4d;
         }
-       .context-menu-divider {
+      .context-menu-divider {
             height: 1px;
             background: var(--border);
             margin: 4px 0;
@@ -222,10 +222,10 @@
             gap: 15px;
         }
 
-      .row { display: flex; gap: 12px; width: 100%; }
-      .row.user { flex-direction: row-reverse; }
+     .row { display: flex; gap: 12px; width: 100%; }
+     .row.user { flex-direction: row-reverse; }
 
-      .avatar {
+     .avatar {
             width: 32px; height: 32px;
             border-radius: 50%;
             flex-shrink: 0;
@@ -234,12 +234,12 @@
             border: 1px solid var(--border);
         }
 
-      .ai-avatar {
+     .ai-avatar {
             background: var(--meta-gradient);
             border: none;
         }
 
-      .content {
+     .content {
             max-width: 85%;
             padding: 10px 14px;
             border-radius: 12px;
@@ -247,13 +247,13 @@
             line-height: 1.4;
         }
 
-      .user.content {
+     .user.content {
             background: var(--user-bubble);
             border: 1px solid var(--border);
         }
 
         #input-container { padding: 15px 10%; background: var(--bg); }
-      .input-box {
+     .input-box {
             background: var(--input-bg);
             border-radius: 20px;
             padding: 8px 18px;
@@ -550,7 +550,7 @@
             const chunks = await engine.chat.completions.create({
                 messages: [
                     { role: "system", content: systemPrompt },
-                   ...chats[targetId].history
+                 ...chats[targetId].history
                 ],
                 stream: true
             });
