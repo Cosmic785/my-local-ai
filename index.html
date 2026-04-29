@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/github-dark.min.css">
+    <link rel="stylesheet" href="https://cdn.gh.io/highlightjs/cdn-release@11.9.0/build/styles/github-dark.min.css">
     <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
 
     <style>
@@ -88,10 +87,12 @@
             padding: 12px;
             background: var(--settings-bg);
             border-top: 1px solid var(--border);
+            max-height: 70vh;
+            overflow-y: auto;
         }
 
       .settings-row {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             display: flex;
             flex-direction: column;
             gap: 4px;
@@ -102,10 +103,11 @@
             background: var(--bg);
             border: 1px solid var(--border);
             color: var(--text);
-            padding: 6px;
-            border-radius: 4px;
+            padding: 8px;
+            border-radius: 6px;
             outline: none;
             width: 100%;
+            font-size: 12px;
         }
 
       .settings-btn {
@@ -146,7 +148,6 @@
         }
       .btn-new-chat:hover {
             opacity: 0.9;
-            border: none;
         }
 
         #history-list {
@@ -298,6 +299,15 @@
                 </div>
 
                 <div class="settings-row">
+                    <label style="font-size: 10px; opacity: 0.7;">DEVICE PROFILE</label>
+                    <select class="settings-select" id="device-select" onchange="window.updateDevice(this.value)">
+                        <option value="PC">💻 Personal Computer</option>
+                        <option value="Mobile">📱 Mobile Phone</option>
+                        <option value="Console">🎮 Console / Other</option>
+                    </select>
+                </div>
+
+                <div class="settings-row">
                     <label style="font-size: 10px; opacity: 0.7;">AI MODEL</label>
                     <select class="settings-select" id="model-select" onchange="window.changeModel(this.value)">
                         <option value="Llama-3.2-1B-Instruct-q4f16_1-MLC">Llama 3.2 1B - Fast 600MB</option>
@@ -319,7 +329,10 @@
 
             <div id="user-profile-trigger" onclick="window.toggleSettings()" style="padding:10px; display:flex; align-items:center; gap:10px; cursor:pointer;">
                 <div id="user-profile-img" style="width:28px; height:28px; border-radius:50%; background: var(--meta-gradient); background-size:cover;"></div>
-                <span id="display-name" style="font-size:13px; font-weight: 800;">User</span>
+                <div style="display: flex; flex-direction: column;">
+                    <span id="display-name" style="font-size:13px; font-weight: 800;">User</span>
+                    <span id="display-device" style="font-size:9px; opacity: 0.6; font-weight: 500;">PC</span>
+                </div>
             </div>
         </div>
 
@@ -377,6 +390,12 @@
         localStorage.setItem('cosmic_theme_v34', t);
     };
 
+    // DEVICE SELECTION LOGIC
+    window.updateDevice = (d) => {
+        localStorage.setItem('cosmic_device_type', d);
+        document.getElementById('display-device').innerText = d;
+    };
+
     window.unlockNow = () => {
         localStorage.setItem('cosmic_auth_success', 'true');
         location.reload();
@@ -414,6 +433,11 @@
     if (cachedName) document.getElementById('display-name').innerText = cachedName;
     const cachedTheme = localStorage.getItem('cosmic_theme_v34');
     if (cachedTheme) window.updateTheme(cachedTheme);
+    const cachedDevice = localStorage.getItem('cosmic_device_type');
+    if (cachedDevice) {
+        document.getElementById('display-device').innerText = cachedDevice;
+        document.getElementById('device-select').value = cachedDevice;
+    }
 </script>
 
 <script type="module">
@@ -460,7 +484,6 @@
         const menu = document.getElementById('context-menu');
         menu.style.display = 'block';
 
-        // Keep menu on screen
         let x = e.pageX, y = e.pageY;
         const menuWidth = 140, menuHeight = 120;
         if (x + menuWidth > window.innerWidth) x = window.innerWidth - menuWidth - 5;
@@ -520,10 +543,14 @@
         contentDiv.innerHTML = `<i>Thinking...</i>`;
 
         try {
+            // Include device context in system prompt
+            const deviceContext = localStorage.getItem('cosmic_device_type') || 'PC';
+            const systemPrompt = `You are Cosmic AI V34.2. User is currently on: ${deviceContext}.`;
+
             const chunks = await engine.chat.completions.create({
                 messages: [
-                    { role: "system", content: "You are Cosmic AI V34.2." },
-                 ...chats[targetId].history
+                    { role: "system", content: systemPrompt },
+                   ...chats[targetId].history
                 ],
                 stream: true
             });
